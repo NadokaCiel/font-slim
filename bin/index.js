@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 import fs from "fs";
-import path from "path";
+import path, { dirname } from "path";
 import chalk from "chalk";
-import fontSpider from "font-spider"
+import fontSpider from "font-spider";
+import { fileURLToPath } from 'url';
 import { program } from "commander";
 
 const defaultFileTypes = "js|ts|json",
@@ -37,8 +38,10 @@ const defaultCharset = ` !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVW
 doJob(src);
 
 function getPackageVersion() {
-  const packageJsonPath = path.join(process.cwd(), 'package.json');
   try {
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = dirname(__filename);
+    const packageJsonPath = path.join(__dirname, '..', 'package.json');
     const packageJson = fs.readFileSync(packageJsonPath, 'utf8');
     const parsedPackageJson = JSON.parse(packageJson);
     return parsedPackageJson.version
