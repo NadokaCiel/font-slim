@@ -1,0 +1,13 @@
+.DS_Store
+.editorconfig
+.idea
+.bat
+node_modules/
+font-dist/
+font-src/
+local-web/
+reduced-web/
+origin/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
