@@ -2,6 +2,32 @@
 
 该工具是一个用于优化字体文件的 npm 库。它可以分析项目文件中使用的文本，并根据这些文本以及指定的字体文件，创建一个仅包含必要字形的压缩后的字体文件。
 
+## 安装
+
+### 全局安装
+
+```bash
+npm install font-slim -g
+```
+
+使用：
+
+```bash
+font-slim -f HuaWenXinSong.ttf -s ./src -t js|ts|json
+```
+
+### 本地安装
+
+```bash
+npm install font-slim --save-dev
+```
+
+使用：
+
+```bash
+npx font-slim -f HuaWenXinSong.ttf -s ./src -t js|ts|json
+```
+
 ## 指令说明
 
 字体文件压缩工具提供了多个配置选项，以适应不同的使用场景。以下是所有可用的命令行参数及其描述：
@@ -15,7 +41,7 @@
 以下是使用这些参数运行工具的示例：
 
 ```bash
-tfp -f "CustomFont" -s "./assets/code" --fontPath "./assets/fonts" -t "js|ts" --no-ascii
+font-slim -f "CustomFont" -s "./assets/code" --fontPath "./assets/fonts" -t "js|ts" --no-ascii
 ```
 
 ## 使用方法
@@ -31,7 +57,7 @@ tfp -f "CustomFont" -s "./assets/code" --fontPath "./assets/fonts" -t "js|ts" --
 执行（本地安装时）
 
 ```bash
-npx tfp
+npx font-slim
 ```
 
 ![命令行结果示例](./img/result-cmd.png)
