@@ -4,8 +4,6 @@ import path from "path";
 import chalk from "chalk";
 import fontSpider from "font-spider"
 import { program } from "commander";
-import packageJSON from '../package.json' assert { type: 'json' };
-const version = packageJSON.version;
 
 const defaultFileTypes = "js|ts|json",
   defaultFontName = "FSFont",
@@ -14,7 +12,7 @@ const defaultFileTypes = "js|ts|json",
   defaultASCII = true;
 
 program
-  .version(version)
+  .version(getPackageVersion())
   .option("-f, --fontName [font name]", "字体名称", defaultFontName)
   .option("-s, --src [source]", "源码文件夹的路径", defaultSrcPath)
   .option("--fontPath [font path]", "字体路径", defaultFontPath)
@@ -37,6 +35,17 @@ const fileExtReg = new RegExp(`^\.${filetypes}`, "i");
 const defaultCharset = ` !"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_\`abcdefghijklmnopqrstuvwxyz{|}~`;
 
 doJob(src);
+
+function getPackageVersion() {
+  const packageJsonPath = path.join(process.cwd(), 'package.json');
+  try {
+    const packageJson = fs.readFileSync(packageJsonPath, 'utf8');
+    const parsedPackageJson = JSON.parse(packageJson);
+    return parsedPackageJson.version
+  } catch (error) {
+    console.error('无法读取 package.json', error);
+  }
+}
 
 /**
  * filter characters
