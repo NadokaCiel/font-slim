@@ -25,4 +25,15 @@ tfp -f "CustomFont" -s "./assets/code" --fontPath "./assets/fonts" -t "js|ts" --
 - 需要解析的全量字体文件（默认名称为 FSFont），常见格式均支持
 - 任意命名的多个文本文件，支持 js、ts、json
 
-执行指令后，压缩字体文件会替代源文件，源文件则可在当前目录的.font-spider/目录下找到。
+示例：
+![目录示例](./img/category.png)
+
+执行（本地安装时）
+
+```bash
+npx tfp
+```
+
+![命令行结果示例](./img/result-cmd.png)
+执行指令后，压缩字体的全格式可在当前目录找到，源文件则可在.font-spider/目录下找到。
+![目录结果示例](./img/result-category.png)
